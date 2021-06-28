@@ -19,3 +19,4 @@ async def bot_echo_all(message: types.Message, state: FSMContext):
     await message.answer(f"Эхо в состоянии <code>{state}</code>.\n"
                          f"\nСодержание сообщения:\n"
                          f"<code>{message}</code>")
+
