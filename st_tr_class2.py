@@ -3,11 +3,11 @@ from PIL import Image
 import copy
 from aiogram import executor
 import asyncio
-import nest_asyncio
+
 
 from loader import event_loop
 
-nest_asyncio.apply()
+
 from torchvision.models import vgg19
 import torch
 import torch.nn as nn
@@ -21,7 +21,7 @@ from torchvision import transforms
 from io import BytesIO
 
 import copy
-
+'''Функции потерь и функция нормализации'''
 class ContentLoss(nn.Module):
 
         def __init__(self, target,):
@@ -73,6 +73,9 @@ class Normalization(nn.Module):
         def forward(self, img):
             # normalize img
             return (img - self.mean) / self.std
+        
+'''Класс переноса стиля самы простой на vgg19,сложные картинки обсчитывается 5-10 минут в зависимости от cpu, сначла все картинки сжимаем до 200*200 потом раскрываем до 1024*1024, получается неплохо при наложении фильтров в виде картин,'''
+
 class run_style_transfer(object):
 
       def image_loader(self, image_name):
